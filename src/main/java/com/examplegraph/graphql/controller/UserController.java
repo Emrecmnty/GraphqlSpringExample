@@ -24,22 +24,22 @@ public class UserController {
     }
 
     @QueryMapping
-    User getUserById(@Argument Long id) {
+    User getUserById(@Argument final Long id) {
         return userService.getUserById(id);
     }
 
     @MutationMapping
-    User createUser(@Argument UserRequest userRequest) {
+    User createUser(@Argument final UserRequest userRequest) {
         return userService.createUser(userRequest);
     }
 
     @MutationMapping
-    User updateUser(@Argument UserRequest userRequest) {
+    User updateUser(@Argument final UserRequest userRequest) {
         return userService.updateUser(userRequest);
     }
 
     @MutationMapping
-    Boolean deleteUser(@Argument Long id) {
+    Boolean deleteUser(@Argument final Long id) {
         userService.deleteUser(id);
         return true;
     }

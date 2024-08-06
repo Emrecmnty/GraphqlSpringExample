@@ -18,14 +18,14 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUserById(Long id) {
+    public User getUserById(final Long id) {
         return userRepository
                 .findById(id)
                 .orElseThrow(() -> new RuntimeException("User with id " + id + " not found"));
     }
 
-    public User createUser(UserRequest userRequest) {
-        User user =
+    public User createUser(final UserRequest userRequest) {
+        final User user =
                 User.builder()
                         .username(userRequest.getUsername())
                         .password(userRequest.getPassword())
@@ -34,16 +34,16 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User updateUser(UserRequest userRequest) {
-        User existing = getUserById(userRequest.getId());
+    public User updateUser(final UserRequest userRequest) {
+        final User existing = getUserById(userRequest.getId());
         existing.setRole(userRequest.getRole());
         existing.setUsername(userRequest.getUsername());
         existing.setPassword(userRequest.getPassword());
         return userRepository.save(existing);
     }
 
-    public void deleteUser(Long id) {
-        User existing = getUserById(id);
+    public void deleteUser(final Long id) {
+        final User existing = getUserById(id);
         userRepository.delete(existing);
     }
 }
